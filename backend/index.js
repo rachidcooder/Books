@@ -1,6 +1,6 @@
 const express = require('express');
 const mysql = require("mysql");
-const cors = require('cors');
+const cors = require("cors");
 const route = require("./Routers/routes.js");
 
 const app = express();
@@ -16,7 +16,8 @@ app.use("/api", route);
 //   password: "mistdjva2@.com",
 //   database: "db"
 // })
-//
+
+
 app.get("/", (req, res) => {
   return res.send("<h1>welecom here ! </h1>");
 })
@@ -47,8 +48,8 @@ app.get("/", (req, res) => {
 
 
 
-app.listen(3000, () => {
-  console.log("listening to the port : 3000");
+app.listen(5000, () => {
+  console.log("listening to the port : 5000");
 })
 
 
