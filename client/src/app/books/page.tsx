@@ -1,18 +1,42 @@
+"use client"
 import BookItem from "./BookItem";
 
 
-export default async function page() {
+const getData = async () => {
+  try {
+    const res = await fetch('http://localhost:5000/api/books', {
+      next: {
+        revalidate: 5
+      }
+    });
+    const resData = await res.json();
+    const booksData = resData.data;
+    return booksData;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return [];
+  }
+}
 
+
+export default async function page() {
+  const data = await getData();
 
   return (
-    <main className='p-3 pt-12'>
-      <h1 className=' text-3xl font-bold text-gray-950 text-center p-4' >Books Shop</h1>
+    <main className='px-3'>
+      <div className='max-h-[500px] relative'>
+        <div className='h-full w-full absolute justify-center flex flex-col max-h-[500px] px-4'>
+          <h1 className=' text-orange-900 text-4xl font-bold lg:text-7xl sm:text-5xl'> Books  <span className='text-orange-900'> Shop</span></h1>
+        </div>
+        <img className='w-full max-h-[500px] object-cover rounded-md'
+          src='https://images.pexels.com/photos/21120/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=300' alt='/' />
 
-      <BookItem />
-
-      <div className=' fixed flex bottom-0 end-0 start-0 justify-end p-5'>
-        <button className=' bg-blue-500  rounded text-4xl text-white p-1'>+</button>
       </div>
+      <BookItem data={data} />
+
+      {/* <button className=' fixed  bottom-0 end-0 m-5  bg-orange-900  hover:bg-orange-800
+          rounded text-4xl text-white p-1'>+</button> */}
+
     </main>
   )
 }

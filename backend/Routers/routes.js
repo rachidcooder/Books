@@ -18,9 +18,9 @@ route.get("/books", (req, res) => {
 
 
 route.post("/book", (req, res) => {
-  const { title, description, cover } = req.body;
-  const q = "INSERT INTO books(title,description,cover) VALUES(?)";
-  const values = [title, description, cover];
+  const { title, description, cover, price, category } = req.body;
+  const q = "INSERT INTO books(title,description,cover,price,category) VALUES(?)";
+  const values = [title, description, cover, price, category];
 
   db.query(q, [values], (err, data) => {
     if (err) res.json(err);
