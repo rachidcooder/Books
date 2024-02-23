@@ -1,6 +1,12 @@
-
 import BookItem from "./BookItem";
+import BackImg from "../data/backimg.png"
+import Image, { StaticImageData } from 'next/image';
 
+// Assuming you have an image object of type StaticImageData
+const image: StaticImageData = BackImg; // Get the image somehow
+
+// Get the URL from the image object
+const imageUrl: string = image.src;
 
 const getData = async () => {
   try {
@@ -26,10 +32,10 @@ export default async function page() {
     <main className='px-3'>
       <div className='max-h-[500px] relative'>
         <div className='h-full w-full absolute justify-center flex flex-col max-h-[500px] px-4'>
-          <h1 className=' text-orange-900 text-4xl font-bold lg:text-7xl sm:text-5xl'> Books  <span className='text-orange-900'> Shop</span></h1>
+          <h1 className=' text-orange-900 text-4xl font-bold lg:text-7xl sm:text-5xl'> Books  <span className='text-orange-400'> Shop</span></h1>
         </div>
         <img className='w-full max-h-[500px] object-cover rounded-md'
-          src='https://images.pexels.com/photos/21120/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=300' alt='/' />
+          src={imageUrl} alt='/' />
 
       </div>
       <BookItem data={data} />

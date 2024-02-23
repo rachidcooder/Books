@@ -16,6 +16,7 @@ function BookItem({ data }) {
   const [books, setBooks] = useState(data);
   const [ctg, setCatregory] = useState("all");
   const [ishighPrice, setisHighPrice] = useState(0);
+  const [textSearch, setTextSearch] = useState("");
 
   useEffect(() => {
     if (ctg != "all")
@@ -36,6 +37,23 @@ function BookItem({ data }) {
     }
   }, [ishighPrice]);
 
+  useEffect(() => {
+
+    if (textSearch !== null && textSearch) {
+      const allBooks = [...books];
+      setBooks(
+        allBooks.filter((book) => {
+          return book.title.toLowerCase().startsWith(textSearch.toLowerCase());
+        })
+      );
+    } else {
+      console.log("text search :", textSearch);
+      setTextSearch("");
+      setBooks(data);
+    }
+
+
+  }, [textSearch]);
 
 
 
@@ -48,7 +66,10 @@ function BookItem({ data }) {
         <div className="flex border rounded-md items-center px-3">
           <CiSearch size={20} className=" font-bold" />
           <input placeholder="search for book "
-            className=" outline-none p-1 rounded-lg hover:bg-gray-50" />
+            className=" outline-none p-1 rounded-lg hover:bg-gray-50"
+            value={textSearch}
+            onChange={(e) => setTextSearch(e.target.value)}
+          />
         </div>
 
       </div>

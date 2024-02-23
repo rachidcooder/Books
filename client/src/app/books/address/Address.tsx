@@ -1,6 +1,11 @@
 "use client"
 import React, { useState } from 'react';
 import { countyCode } from '../../data/data.js';
+import { AiFillDelete } from 'react-icons/ai'
+import { FaCcVisa, FaPaypal } from 'react-icons/fa'
+import { FaCcMastercard } from 'react-icons/fa6'
+
+
 
 function Address() {
   const [countryName, setCountryName] = useState("Morocco");
@@ -12,6 +17,12 @@ function Address() {
   const [province, setProvince] = useState("");
   const [zip, setZip] = useState("");
   const [asdefAddress, setAsdefAdress] = useState(true);
+
+  //
+  const [istoPay, setIstopPay] = useState(false);
+  const [tolat, setTotal] = useState(1);
+  const [cardN, setCardN] = useState("");
+  const [cvv, setCvv] = useState("");
 
   const onSave = async () => {
     if (!countryName || !contactName || !mobile || !city || !street || !province || !zip) {
@@ -100,6 +111,51 @@ function Address() {
           />
         </div>
 
+        {/**  Payment */}
+        <div className=' bg-gray-100 m-2 p-1 rounded '>
+          <h1 className='text-xl font-bold'>Payment Methods</h1>
+          <h2 className='text-xl text-blue-500 cursor-pointer'
+            onClick={() => { setIstopPay(true) }}
+          >Select Payment Method</h2>
+        </div>
+
+        {/** To add card */}
+        {istoPay ? <div className='fixed h-screen w-full bg-black/80 top-0 left-0 z-10'>
+        </div> : ""}
+        {istoPay ? <div
+          className='w-full h-screen z-10 fixed top-0 left-0  flex justify-center items-center'>
+          <div className='w-[400px] bg-gray-200 p-5 rounded-lg'>
+            <div className=' bg-white my-1 rounded-lg p-2'>
+              <h1 className=' font-bold text-center'>Add a new card</h1>
+              <div className='flex flex-row'>
+                <FaCcVisa size={20} className='mx-2' />
+                <FaCcMastercard size={20} className='mx-2' />
+                <FaPaypal size={20} className='mx-2' />
+              </div>
+            </div>
+            <input type='text' placeholder='Card Number'
+              className='w-full my-1 outline-none p-2 rounded-lg'
+              value={cardN}
+              onChange={(e) => { setCardN(e.target.value) }} />
+            <input type='text' placeholder='MM/YY'
+              className='w-full my-1 outline-none p-2 rounded-lg' />
+            <input type='text' placeholder='CVV'
+              className='w-full my-1 outline-none p-2 rounded-lg' />
+
+            <div className='flex items-center py-3'>
+              <label className='px-3'>Save card details</label>
+              <input type='checkbox' defaultChecked
+                className='w-6 h-6 rounded-lg outline-none' />
+            </div>
+            <button onClick={() => { setIstopPay(false) }}
+              className="text-xl bg-orange-500 font-bold text-center py-1 rounded-full w-full text-white">
+              save $ confirm
+            </button>
+          </div>
+        </div> : ""}
+
+
+        {/**  ---- */}
         <div className='bg-gray-50 shadow-sm px-4 py-2 flex justify-center flex-col'>
           <div className='p-3 flex items-center'>
             <label className='font-bold text-xl'>Set as default shipping address</label>
@@ -112,13 +168,15 @@ function Address() {
               onChange={(e) => { setAsdefAdress(e.target.checked) }}
             />
           </div>
+
+
           <div className='p-3'>
             <button
               onClick={() => onSave()}
               className='rounded-lg bg-orange-700 text-white font-bold py-1 px-5 w-full
                 hover:bg-orange-800'
             >
-              Save
+              Buy
             </button>
           </div>
         </div>
