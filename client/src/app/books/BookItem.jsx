@@ -47,7 +47,7 @@ function BookItem({ data }) {
         })
       );
     } else {
-      console.log("text search :", textSearch);
+
       setTextSearch("");
       setBooks(data);
     }

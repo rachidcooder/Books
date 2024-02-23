@@ -7,7 +7,8 @@ import { FaCcMastercard } from 'react-icons/fa6'
 
 
 
-function Address() {
+function Address({ data }: any) {
+
   const [countryName, setCountryName] = useState("Morocco");
   const [countryCode, setCountryCode] = useState("+212");
   const [contactName, setContactName] = useState("");
@@ -17,16 +18,21 @@ function Address() {
   const [province, setProvince] = useState("");
   const [zip, setZip] = useState("");
   const [asdefAddress, setAsdefAdress] = useState(true);
-
+  const [err, setErr] = useState("");
   //
   const [istoPay, setIstopPay] = useState(false);
   const [tolat, setTotal] = useState(1);
   const [cardN, setCardN] = useState("");
   const [cvv, setCvv] = useState("");
+  const [dateCard, setDateCard] = useState("");
 
   const onSave = async () => {
+
     if (!countryName || !contactName || !mobile || !city || !street || !province || !zip) {
-      console.error("Some fields are empty!");
+      setErr("Some fields are empty!");
+    } else {
+
+      setErr("");
     }
   }
 
@@ -34,6 +40,18 @@ function Address() {
     const code = countyCode.find((it) => it.name === name)?.code || "";
     setCountryCode(code);
   };
+
+
+  const OrderNow = async () => {
+
+    if (!cardN || !cvv || !dateCard) {
+      setErr("all information required!");
+      return;
+    }
+
+  }
+
+
 
   return (
     <div className='max-w-[1640px] p-5'>
@@ -115,12 +133,12 @@ function Address() {
         <div className=' bg-gray-100 m-2 p-1 rounded '>
           <h1 className='text-xl font-bold'>Payment Methods</h1>
           <h2 className='text-xl text-blue-500 cursor-pointer'
-            onClick={() => { setIstopPay(true) }}
+            onClick={() => { setIstopPay(true); setErr("") }}
           >Select Payment Method</h2>
         </div>
 
         {/** To add card */}
-        {istoPay ? <div className='fixed h-screen w-full bg-black/80 top-0 left-0 z-10'>
+        {istoPay ? <div className='fixed h-screen w-full bg-black/90 top-0 left-0 z-10'>
         </div> : ""}
         {istoPay ? <div
           className='w-full h-screen z-10 fixed top-0 left-0  flex justify-center items-center'>
@@ -140,17 +158,28 @@ function Address() {
             <input type='text' placeholder='MM/YY'
               className='w-full my-1 outline-none p-2 rounded-lg' />
             <input type='text' placeholder='CVV'
-              className='w-full my-1 outline-none p-2 rounded-lg' />
+              className='w-full my-1 outline-none p-2 rounded-lg'
+              value={cvv}
+              onChange={(e) => setCvv(e.target.value)}
+            />
 
             <div className='flex items-center py-3'>
               <label className='px-3'>Save card details</label>
               <input type='checkbox' defaultChecked
                 className='w-6 h-6 rounded-lg outline-none' />
             </div>
-            <button onClick={() => { setIstopPay(false) }}
-              className="text-xl bg-orange-500 font-bold text-center py-1 rounded-full w-full text-white">
-              save $ confirm
-            </button>
+            {err && <span className='text-red-600 text-xl font-semibold p-1'>{err}</span>}
+            <div className=' flex justify-between px-2 space-x-2'>
+              <button onClick={() => { OrderNow() }}
+                className="text-xl bg-orange-700 font-bold text-center py-1 rounded-full w-full text-white">
+                confirm
+              </button>
+              <button onClick={() => { setIstopPay(false); setErr("") }}
+                className="text-xl bg-orange-700 font-bold text-center py-1 rounded-full w-full text-white">
+                cancel
+              </button>
+            </div>
+
           </div>
         </div> : ""}
 
@@ -169,7 +198,7 @@ function Address() {
             />
           </div>
 
-
+          {err && !istoPay && <span className='text-red-600 font-bold text-xl p-1'>{err}</span>}
           <div className='p-3'>
             <button
               onClick={() => onSave()}
