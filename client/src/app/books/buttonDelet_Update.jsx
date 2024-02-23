@@ -1,12 +1,13 @@
 "use client"
 import React from 'react'
-import { FcLike } from "react-icons/fc";
+import { useRouter } from 'next/navigation'
 
 function buttonDelet_Update({ id }) {
-
+  const route = useRouter();
 
   const ondelete = () => {
     console.log("delete book with id :", id);
+    route.push("/books/address");
 
   }
   return (

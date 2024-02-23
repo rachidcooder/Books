@@ -45,7 +45,7 @@ function BookItem({ data }) {
     <div className="p-2">
       <h1 className=" text-center text-orange-900 text-2xl p-2 font-bold">Top Books</h1>
       <div className=" flex  w-full justify-end ">
-        <div className="flex border rounded-md items-center">
+        <div className="flex border rounded-md items-center px-3">
           <CiSearch size={20} className=" font-bold" />
           <input placeholder="search for book "
             className=" outline-none p-1 rounded-lg hover:bg-gray-50" />
@@ -93,7 +93,7 @@ function BookItem({ data }) {
           </div>
         </div>
       </div>
-      <div className=' grid md:grid-cols-3 gap-6  grid-cols-1 py-2'>
+      <div className=' grid lg:grid-cols-4 md:grid-cols-3 gap-6  grid-cols-1 py-2'>
         {data && books.map((book, i) => {
           return (
             <div key={i} className='flex   flex-col  rounded-sm p-2  shadow-sm items-center 
