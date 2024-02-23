@@ -19,7 +19,7 @@ function Address() {
     }
   }
 
-  const setCodeCountry = (name) => {
+  const setCodeCountry = (name: string) => {
     const code = countyCode.find((it) => it.name === name)?.code || "";
     setCountryCode(code);
   };
