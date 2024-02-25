@@ -25,7 +25,6 @@ const getBook = async (id: Number) => {
 async function page({ params }: Params) {
   const data = await getBook(params.id);
 
-  console.log(" book : ", data);
   return (
     <main>
       <Address data={data} />

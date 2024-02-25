@@ -51,11 +51,17 @@ function Address({ data }: any) {
 
   }
 
-
+  console.log("data : ", data)
 
   return (
     <div className='max-w-[1640px] p-5'>
-
+      <div className='flex max-h-[200px] p-5 bg-gray-50'>
+        <img src={data[0].cover} className='w-[100px] h-[110px]' alt='' />
+        <div className=' px-5 '>
+          <h1 className='text-3xl font-bold '>{data[0].title}</h1>
+          <h1 className=' text-orange-700 text-xl font-bold'>{data[0].price} $$</h1>
+        </div>
+      </div>
       <div>
         <h1 className='md:text-3xl text-xl font-bold py-3'>Shipping Address</h1>
         <div className='bg-gray-50 shadow-sm p-4'>
