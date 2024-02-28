@@ -28,6 +28,7 @@ async function page({ params }: Params) {
   return (
     <main>
       <Address data={data} />
+
     </main>
   )
 }

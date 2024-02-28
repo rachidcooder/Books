@@ -1,13 +1,40 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useReducer, useState } from 'react';
 import { countyCode } from '../../data/data.js';
 import { AiFillDelete } from 'react-icons/ai'
 import { FaCcVisa, FaPaypal } from 'react-icons/fa'
 import { FaCcMastercard } from 'react-icons/fa6'
+import { FaWhatsapp } from "react-icons/fa";
 
 
+interface State {
+  count: number;
+}
+
+type Action =
+  | { type: 'increment' }
+  | { type: 'decrement' };
+
+// Define initial state
+const initialState: State = {
+  count: 1
+};
+
+// Define reducer function
+const counterReduce = (state: State, action: Action): State => {
+  switch (action.type) {
+    case 'increment':
+      return { ...state, count: Math.min(state.count + 1, 5) };
+    case 'decrement':
+      return { ...state, count: Math.max(state.count - 1, 1) };
+    default:
+      return state;
+  }
+};
 
 function Address({ data }: any) {
+
+  const [state, dispatch] = useReducer(counterReduce, initialState);
 
   const [countryName, setCountryName] = useState("Morocco");
   const [countryCode, setCountryCode] = useState("+212");
@@ -25,7 +52,15 @@ function Address({ data }: any) {
   const [cardN, setCardN] = useState("");
   const [cvv, setCvv] = useState("");
   const [dateCard, setDateCard] = useState("");
+  const [isOnline, setIsOnline] = useState(false);
 
+  const increment = () => {
+    dispatch({ type: 'increment' });
+  };
+
+  const decrement = () => {
+    dispatch({ type: 'decrement' });
+  };
   const onSave = async () => {
 
     if (!countryName || !contactName || !mobile || !city || !street || !province || !zip) {
@@ -51,18 +86,48 @@ function Address({ data }: any) {
 
   }
 
-  console.log("data : ", data)
 
   return (
-    <div className='max-w-[1640px] p-5'>
+    <div className='max-w-[1640px] p-5 '>
       <div className='flex max-h-[200px] p-5 bg-gray-50'>
         <img src={data[0].cover} className='w-[100px] h-[110px]' alt='' />
         <div className=' px-5 '>
           <h1 className='text-3xl font-bold '>{data[0].title}</h1>
           <h1 className=' text-orange-700 text-xl font-bold'>{data[0].price} $$</h1>
+          <div className=' space-x-1 '>
+            <span className='border text-xl font-bold px-2 cursor-pointer bg-gray-100'
+              onClick={() => decrement()}>-</span>
+            <span className='border  text-xl font-bold px-2 bg-gray-100'>{state.count}</span>
+            <span className='border  text-xl font-bold px-2 cursor-pointer bg-gray-100'
+              onClick={() => increment()}>+</span>
+          </div>
         </div>
       </div>
-      <div>
+
+      {<div className="flex items-center space-x-4">
+        <span className='text-xl font-semibold text-gray-800'>Pay By card  : </span>
+        <button
+          className={`px-4 py-2 rounded-full text-white ${isOnline ? 'bg-green-500 hover:bg-green-600' : 'bg-gray-400 hover:bg-gray-600'}`}
+          onClick={() => setIsOnline(true)}
+        >
+          Yes
+        </button>
+        <button
+          className={`px-4 py-2 rounded-full text-white ${!isOnline ? 'bg-red-500 hover:bg-red-600' : 'bg-gray-400 hover:bg-gray-600'}`}
+          onClick={() => setIsOnline(false)}
+        >
+          No
+        </button>
+      </div>
+      }
+
+      {!isOnline && <div className='flex  flex-col items-center justify-center h-full p-12'>
+        <h1 className=' text-2xl font-semibold p-1 mt-10'>chose the qunatity then  </h1>
+        <h1 className='text-3xl font-semibold '>Send Message on Whatssap </h1>
+      </div>}
+
+
+      {isOnline && <div>
         <h1 className='md:text-3xl text-xl font-bold py-3'>Shipping Address</h1>
         <div className='bg-gray-50 shadow-sm p-4'>
           <h1 className='text-xl font-bold py-3 mt-3'>Country/Region</h1>
@@ -216,8 +281,12 @@ function Address({ data }: any) {
           </div>
         </div>
 
-      </div>
+      </div>}
 
+
+      {!isOnline && <a href={`https://wa.me/212616421373?text=I%27m%20interested%20in%20this%0ABook_ID:%20${data[0].id}%0ABook_Name%20:%20${data[0].title}%0ABook_Price%20:%20${data[0].price}$$%20%0AQuantity%20:%20${state.count}`}
+        target="_blank" className=' fixed  bottom-0 end-0 m-10  bg-gray-50 
+          rounded text-4xl text-green-700 font-bold  p-1'><FaWhatsapp size={40} /></a>}
     </div>
   );
 }

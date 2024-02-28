@@ -2,6 +2,8 @@ import BookItem from "./BookItem";
 import BackImg from "../data/backimg.png"
 import Image, { StaticImageData } from 'next/image';
 
+
+
 // Assuming you have an image object of type StaticImageData
 const image: StaticImageData = BackImg; // Get the image somehow
 
@@ -40,8 +42,7 @@ export default async function page() {
       </div>
       <BookItem data={data} />
 
-      {/* <button className=' fixed  bottom-0 end-0 m-5  bg-orange-900  hover:bg-orange-800
-          rounded text-4xl text-white p-1'>+</button> */}
+
 
     </main>
   )

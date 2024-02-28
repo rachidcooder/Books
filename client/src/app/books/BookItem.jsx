@@ -18,6 +18,7 @@ function BookItem({ data }) {
   const [ishighPrice, setisHighPrice] = useState(0);
   const [textSearch, setTextSearch] = useState("");
 
+  console.log("data : ", data)
   useEffect(() => {
     if (ctg != "all")
       setBooks(data.filter((book, i) => { return book.category === ctg }));
