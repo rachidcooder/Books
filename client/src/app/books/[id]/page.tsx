@@ -1,6 +1,5 @@
 
 import Address from "./Address"
-import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
 import { Db_books } from "../../data/datap"
 
 
@@ -19,7 +18,7 @@ import { Db_books } from "../../data/datap"
 //   }
 // }
 
-export default function page({ params }: Params) {
+export default function page({ params }: any) {
   //await getBook(params.id);
 
   const data = Db_books.filter((item: any) => {
