@@ -31,13 +31,17 @@ export default async function page() {
   const data = await getData();
 
   return (
-    <main className='px-3'>
+    <main className='px-3 scrollbar-thumb-orange-800 scrollbar-thin 
+          scrollbar-track-slate-50 h-screen overflow-y-scroll '>
       <div className='max-h-[500px] relative'>
-        <div className='h-full w-full absolute justify-center flex flex-col max-h-[500px] px-4'>
-          <h1 className=' text-orange-900 text-4xl font-bold lg:text-7xl sm:text-5xl'> Books  <span className='text-orange-400'> Shop</span></h1>
+        <div className='h-full w-full absolute hidden  sm:flex flex-col max-h-[500px] md:p-12'>
+          <h1 className=' text-gray-200 text-center text-4xl font-bold lg:text-7xl sm:text-5xl md:m-5'
+          >Welecom to BookShop</h1>
+          <h1 className="text-xl font-medium lg:text-2xl text-center text-orange-950">
+            We're here to help you find the perfect book, regardless of your reading taste</h1>
         </div>
-        <img className='w-full max-h-[500px] object-cover rounded-md'
-          src={imageUrl} alt='/' />
+        <img className='w-full max-h-[400px] object-cover rounded-md'
+          src="https://images.pexels.com/photos/267586/pexels-photo-267586.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt='/' />
 
       </div>
       <BookItem data={data} />

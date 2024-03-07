@@ -1,10 +1,16 @@
+"use client"
+import { useEffect } from "react";
+import { useRouter } from 'next/navigation'
 
-import BookItem from "./books/BookItem";
-import addBook from "./compoanent/addBook";
 
 export default function Home() {
+  const router = useRouter();
+  useEffect(() => {
+    router.push('/books');
+  })
+
   return (
-    <main className="">
+    <main className=" ">
     </main>
   );
 }

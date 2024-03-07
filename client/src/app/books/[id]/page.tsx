@@ -1,6 +1,7 @@
 import React from 'react'
 import Address from "./Address"
 import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
+import { Db_books } from "../../data/datap"
 
 
 interface Prams {
@@ -23,7 +24,13 @@ const getBook = async (id: Number) => {
 
 
 async function page({ params }: Params) {
-  const data = await getBook(params.id);
+  //await getBook(params.id);
+  console.log("params.id :", params.id)
+  const data = Db_books.filter((item: any) => {
+    return item.id == params.id
+  })
+
+  console.log("data filter : ", data);
 
   return (
     <main>

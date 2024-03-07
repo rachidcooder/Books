@@ -33,7 +33,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/app/compoanent/bookItem.jsx",
-    "src/app/books/[id]/Address.tsx"
+    "src/app/books/[id]/Address.jsx"
   ],
   "exclude": [
     "node_modules"

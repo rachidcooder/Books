@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react"
 import ButtDel_Upd from "./buttonDelet_Update"
 import { CiSearch } from "react-icons/ci";
+import { Db_books } from "../data/datap"
 
 // interface Book {
 //   id: number;
@@ -9,20 +10,18 @@ import { CiSearch } from "react-icons/ci";
 //   description: string;
 //   cover: string | null;
 //   price: number | null;
-// }
-
+// };
 
 function BookItem({ data }) {
-  const [books, setBooks] = useState(data);
+  const [books, setBooks] = useState(Db_books);
   const [ctg, setCatregory] = useState("all");
   const [ishighPrice, setisHighPrice] = useState(0);
   const [textSearch, setTextSearch] = useState("");
 
-  console.log("data : ", data)
   useEffect(() => {
     if (ctg != "all")
-      setBooks(data.filter((book, i) => { return book.category === ctg }));
-    else setBooks(data);
+      setBooks(Db_books.filter((book, i) => { return book.category === ctg }));
+    else setBooks(Db_books);
   }, [ctg]);
 
   //
@@ -48,9 +47,8 @@ function BookItem({ data }) {
         })
       );
     } else {
-
       setTextSearch("");
-      setBooks(data);
+      setBooks(Db_books);
     }
 
 
@@ -58,16 +56,16 @@ function BookItem({ data }) {
 
 
 
-
+  console.log("data of books : ", Db_books)
 
   return (
     <div className="p-2">
-      <h1 className=" text-center text-orange-900 text-2xl p-2 font-bold">Top Books</h1>
+      <h1 className=" text-center text-orange-700 text-2xl md:text-3xl xl:text-5xl p-2 font-semibold">Best Books</h1>
       <div className=" flex  w-full justify-end ">
-        <div className="flex border rounded-md items-center px-3">
+        <div className="flex border rounded-md items-center px-5">
           <CiSearch size={20} className=" font-bold" />
           <input placeholder="search for book "
-            className=" outline-none p-1 rounded-lg hover:bg-gray-50"
+            className=" outline-none p-2 rounded-lg hover:bg-gray-50 text-xl "
             value={textSearch}
             onChange={(e) => setTextSearch(e.target.value)}
           />
@@ -76,34 +74,34 @@ function BookItem({ data }) {
       </div>
       <div className=" flex justify-between p-3">
         <div>
-          <h1 className=" text-orange-900 text-xl font-bold p-1" >Categories</h1>
-          <div className=" md:flex space-x-2">
+          <h1 className=" text-orange-700 text-2xl xl:text-3xl font-bold p-1" >Categories</h1>
+          <div className=" md:flex space-x-2 text-xl xl:text-2xl ">
             <h1 className=" p-1 px-2  border rounded-xl cursor-pointer
              hover:bg-orange-700 hover:text-gray-100"
               onClick={() => setCatregory("all")}
             >All</h1>
             <h1 className=" p-1 px-2  border rounded-xl cursor-pointer
              hover:bg-orange-700 hover:text-gray-100"
-              onClick={() => setCatregory("science")}
+              onClick={() => setCatregory("Science")}
             >Science</h1>
             <h1 className=" p-1 px-2  border rounded-xl cursor-pointer
              hover:bg-orange-700 hover:text-gray-100"
-              onClick={() => setCatregory("history")}
+              onClick={() => setCatregory("History")}
             >History</h1>
             <h1 className=" p-1 px-2  border rounded-xl cursor-pointer
              hover:bg-orange-700 hover:text-gray-100"
-              onClick={() => setCatregory("religion")}
+              onClick={() => setCatregory("Religion")}
             >Religion</h1>
             <h1 className=" p-1 px-2  border rounded-xl cursor-pointer
             hover:bg-orange-700 hover:text-gray-100"
-              onClick={() => setCatregory("philosophy")}
+              onClick={() => setCatregory("Philosophy")}
             >Philosophy</h1>
           </div>
         </div>
 
         <div>
-          <h1 className=" text-orange-900 text-xl font-bold p-1" >Filter Price</h1>
-          <div className=" md:flex space-x-2">
+          <h1 className=" text-orange-700 text-2xl xl:text-3xl font-bold p-1" >Filter Price</h1>
+          <div className=" md:flex space-x-2 text-xl xl:text-2xl">
             <h1 className=" p-1 px-2  border rounded-xl hover:bg-orange-700 cursor-pointer 
               hover:text-gray-100"
               onClick={() => setisHighPrice(1)}
@@ -114,26 +112,28 @@ function BookItem({ data }) {
             >Lowest</h1>
           </div>
         </div>
+
       </div>
       <div className=' grid lg:grid-cols-4 md:grid-cols-3 gap-6  grid-cols-1 py-2'>
-        {data && books.map((book, i) => {
-          return (
-            <div key={i} className='flex   flex-col  rounded-sm p-2  shadow-sm items-center 
+        {
+          Db_books && books.map((book, i) => {
+            return (
+              <div key={i} className='flex   flex-col  rounded-sm p-2  shadow-sm items-center 
             text-center'>
-              <img src={book.cover}
-                alt='#' className='h-[200px] w-[150px] pt-3 rounded-lg bg-transparent' />
-              <h1 className='text-xl font-bold text-gray-950 text-center py-2'>{book.title}</h1>
-              <p className=' text-gray-700 p-4 '>{book.description}
-              </p>
+                <img src={book.image}
+                  alt='#' className='h-[200px] w-[150px] pt-3 rounded-lg bg-transparent' />
+                <h1 className='text-xl font-bold text-gray-950 text-center py-2'>{book.title}</h1>
+                <p className=' text-gray-700 p-4 '>{book.description}
+                </p>
 
-              <div className="flex flex-col justify-end h-full bottom-0 start-0 ">
-                <h1 className=' text-center font-bold text-gray-950 p-2'>{book.price}$</h1>
-                <ButtDel_Upd id={book.id} />
+                <div className="flex flex-col justify-end h-full bottom-0 start-0 ">
+                  <h1 className=' text-xl xl:text-2xl text-center font-bold text-orange-800 p-2'>{book.price}$</h1>
+                  <ButtDel_Upd id={book.id} />
+                </div>
+
               </div>
-
-            </div>
-          )
-        })
+            )
+          })
         }
 
 
