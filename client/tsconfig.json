@@ -32,8 +32,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/compoanent/bookItem.jsx",
-    "src/app/books/[id]/Address.jsx"
+    "src/app/books/[id]/Address.jsx",
+    "src/app/books/Button_Buy.jsx"
   ],
   "exclude": [
     "node_modules"

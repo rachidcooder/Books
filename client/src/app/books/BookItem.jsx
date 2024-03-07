@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useState } from "react"
-import ButtDel_Upd from "./ButtonDelet_Update"
+import ButtBuy from "./Button_Buy.jsx"
 import { CiSearch } from "react-icons/ci";
 import { Db_books } from "../data/datap"
 
@@ -130,7 +130,7 @@ function BookItem() {
 
                 <div className="flex flex-col justify-end h-full bottom-0 start-0 ">
                   <h1 className=' text-xl xl:text-2xl text-center font-bold text-orange-800 p-2'>{book.price}$</h1>
-                  <ButtDel_Upd id={book.id} />
+                  <ButtBuy id={book.id} />
                 </div>
 
               </div>
