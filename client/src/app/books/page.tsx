@@ -4,31 +4,31 @@ import Image, { StaticImageData } from 'next/image';
 
 
 
-// Assuming you have an image object of type StaticImageData
-const image: StaticImageData = BackImg; // Get the image somehow
+// // Assuming you have an image object of type StaticImageData
+// const image: StaticImageData = BackImg; // Get the image somehow
 
-// Get the URL from the image object
-const imageUrl: string = image.src;
+// // Get the URL from the image object
+// const imageUrl: string = image.src;
 
-const getData = async () => {
-  try {
-    const res = await fetch('http://localhost:5000/api/books', {
-      next: {
-        revalidate: 5
-      }
-    });
-    const resData = await res.json();
-    const booksData = resData.data;
-    return booksData;
-  } catch (error) {
-    console.error('Error fetching data:', error);
-    return [];
-  }
-}
+// const getData = async () => {
+//   try {
+//     const res = await fetch('http://localhost:5000/api/books', {
+//       next: {
+//         revalidate: 5
+//       }
+//     });
+//     const resData = await res.json();
+//     const booksData = resData.data;
+//     return booksData;
+//   } catch (error) {
+//     console.error('Error fetching data:', error);
+//     return [];
+//   }
+// }
 
 
 export default async function page() {
-  const data = await getData();
+  // const data = await getData();
 
   return (
     <main className='px-3 scrollbar-thumb-orange-800 scrollbar-thin 
@@ -44,7 +44,7 @@ export default async function page() {
           src="https://images.pexels.com/photos/267586/pexels-photo-267586.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt='/' />
 
       </div>
-      <BookItem data={data} />
+      <BookItem />
 
 
 

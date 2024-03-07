@@ -12,7 +12,12 @@ import { Db_books } from "../data/datap"
 //   price: number | null;
 // };
 
-function BookItem({ data }) {
+
+
+
+
+
+function BookItem() {
   const [books, setBooks] = useState(Db_books);
   const [ctg, setCatregory] = useState("all");
   const [ishighPrice, setisHighPrice] = useState(0);
