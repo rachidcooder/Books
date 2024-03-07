@@ -1,12 +1,9 @@
-import React from 'react'
+
 import Address from "./Address"
 import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
 import { Db_books } from "../../data/datap"
 
 
-interface Prams {
-  id: Number
-}
 
 
 // const getBook = async (id: Number) => {
@@ -22,8 +19,7 @@ interface Prams {
 //   }
 // }
 
-
-async function page({ params }: Params) {
+export default function page({ params }: Params) {
   //await getBook(params.id);
 
   const data = Db_books.filter((item: any) => {
@@ -38,5 +34,3 @@ async function page({ params }: Params) {
     </main>
   )
 }
-
-export default page
