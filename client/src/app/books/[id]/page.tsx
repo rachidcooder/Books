@@ -17,19 +17,18 @@ import { Db_books } from "../../data/datap"
 //     return [];
 //   }
 // }
+interface PageProps {
+  params: {
+    id: number;
+  };
+}
 
-export default function page({ params }: any) {
-  //await getBook(params.id);
-
-  const data = Db_books.filter((item: any) => {
-    return item.id == params.id
-  })
-
+export default function page({ params }: PageProps) {
+  const data = Db_books.filter((item: any) => item.id == params.id);
 
   return (
     <main>
       <Address data={data} />
-
     </main>
-  )
+  );
 }
