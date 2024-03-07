@@ -55,9 +55,6 @@ function BookItem({ data }) {
   }, [textSearch]);
 
 
-
-  console.log("data of books : ", Db_books)
-
   return (
     <div className="p-2">
       <h1 className=" text-center text-orange-700 text-2xl md:text-3xl xl:text-5xl p-2 font-semibold">Best Books</h1>

@@ -25,12 +25,11 @@ const getBook = async (id: Number) => {
 
 async function page({ params }: Params) {
   //await getBook(params.id);
-  console.log("params.id :", params.id)
+
   const data = Db_books.filter((item: any) => {
     return item.id == params.id
   })
 
-  console.log("data filter : ", data);
 
   return (
     <main>
