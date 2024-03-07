@@ -2,7 +2,7 @@
 import React from 'react'
 import { useRouter } from 'next/navigation'
 
-function buttonDelet_Update({ id }) {
+function Button_Buy({ id }) {
   const route = useRouter();
 
   const onBay = () => {
@@ -20,4 +20,4 @@ function buttonDelet_Update({ id }) {
   )
 }
 
-export default buttonDelet_Update
+export default Button_Buy
