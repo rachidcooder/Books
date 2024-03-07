@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useState } from "react"
-import ButtDel_Upd from "./buttonDelet_Update"
+import ButtDel_Upd from "./ButtonDelet_Update"
 import { CiSearch } from "react-icons/ci";
 import { Db_books } from "../data/datap"
 

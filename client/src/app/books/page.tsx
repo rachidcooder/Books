@@ -38,7 +38,9 @@ export default async function page() {
           <h1 className=' text-gray-200 text-center text-4xl font-bold lg:text-7xl sm:text-5xl md:m-5'
           >Welecom to BookShop</h1>
           <h1 className="text-xl font-medium lg:text-2xl text-center text-orange-950">
-            We're here to help you find the perfect book, regardless of your reading taste</h1>
+            We&apos;re here to help you find the perfect book, regardless of your reading taste
+          </h1>
+
         </div>
         <img className='w-full max-h-[400px] object-cover rounded-md'
           src="https://images.pexels.com/photos/267586/pexels-photo-267586.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt='/' />
