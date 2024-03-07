@@ -90,11 +90,12 @@ function Address({ data }: any) {
 
 
   return (
-    <div className='max-w-[1640px] p-5 text-gray-900'>
-      <div className='flex max-h-[200px] p-5 bg-gray-50'>
+    <div className='max-w-[1640px] sm:p-5 p-2 text-gray-900'>
+
+      <div className=' sm:flex items-center  sm:p-5 bg-gray-50'>
         <img src={data[0].image} className='w-[100px] h-[120px]' alt='' />
-        <div className=' px-5 '>
-          <h1 className='text-3xl font-bold '>{data[0].title}</h1>
+        <div className=' sm:px-5 p-1 '>
+          <h1 className=' sm:text-3xl text-2xl font-bold '>{data[0].title}</h1>
           <h1 className=' text-orange-700 text-xl font-bold'>{data[0].price} $$</h1>
           <div className=' space-x-1 '>
             <span className='border text-xl font-bold px-2 cursor-pointer bg-gray-100'
@@ -109,24 +110,27 @@ function Address({ data }: any) {
         </div>
       </div>
 
-      {<div className=" flex flex-col sm:flex-row items-center space-x-4 sm:py-3">
-        <span className='text-xl font-semibold text-gray-800'>Paiement when recieving : </span>
-        <button
-          className={`px-4 p-1 rounded-full  ${!isOnline ? 'bg-green-500 hover:bg-green-600' : ' border-4'}`}
-          onClick={() => setIsOnline(false)}
-        >
-          Yes
-        </button>
-        <button
-          className={`px-4 p-1 rounded-full ${isOnline ? 'bg-red-500 hover:bg-red-600' : ' border'}`}
-          onClick={() => setIsOnline(true)}
-        >
-          No
-        </button>
-      </div>
-      }
+      <div className=" flex flex-col sm:flex-row sm:items-center space-x-1 sm:space-x-4 sm:py-3 space-y-2">
+        <h1 className='text-xl sm:w- font-semibold text-gray-800 '>Paiement when recieving : </h1>
+        <div className='flex'>
+          <button
+            className={` sm:px-4 p-1 rounded-full  ${!isOnline ? 'bg-green-500 hover:bg-green-600' : ' border-4'}`}
+            onClick={() => setIsOnline(false)}
+          >
+            Yes
+          </button>
+          <button
+            className={`s:px-4 p-1 rounded-full ${isOnline ? 'bg-red-500 hover:bg-red-600' : ' border'}`}
+            onClick={() => setIsOnline(true)}
+          >
+            No
+          </button>
+        </div>
 
-      {!isOnline && <div className='flex  flex-col items-center justify-center h-full p-12'>
+      </div>
+
+
+      {!isOnline && <div className='flex  flex-col items-center justify-center h-full sm:p-12 p-4'>
         <h1 className=' sm:text-2xl font-semibold p-1 mt-10 text-center'> Choose the quantity and then  </h1>
         <h1 className='text-xl sm:text-3xl font-semibold text-center'>send a message on WhatsApp </h1>
       </div>}
@@ -135,9 +139,9 @@ function Address({ data }: any) {
       {isOnline && <div>
         <h1 className='md:text-3xl text-xl font-bold py-3'>Shipping Address</h1>
         <div className='bg-gray-50 shadow-sm p-4'>
-          <h1 className='text-xl font-bold py-3 mt-3'>Country/Region</h1>
+          <h1 className='text-xl font-bold sm:py-3 sm:mt-3 p-1'>Country/Region</h1>
           <select
-            className='px-5 py-2 rounded border border-gray-400 outline-none'
+            className='sm:px-5 p-2 rounded border border-gray-400 outline-none'
             value={countryName}
             onChange={(e) => { setCountryName(e.target.value); setCodeCountry(e.target.value) }}
           >
@@ -147,10 +151,10 @@ function Address({ data }: any) {
           </select>
         </div>
 
-        <div className='bg-gray-50 shadow-sm p-4 mt-3'>
+        <div className='bg-gray-50 shadow-sm p-2 sm:p-4 mt-1 sm:mt-3'>
           <h1 className='text-xl font-bold py-3'>Personal Information</h1>
           <input
-            className='px-5 py-2 outline-none rounded-lg m-2 bg-gray-200'
+            className='sm:px-5 p-2 outline-none rounded-lg m-2 bg-gray-200'
             type='text'
             placeholder='Contact Name *'
             value={contactName}
@@ -165,7 +169,7 @@ function Address({ data }: any) {
               readOnly
             />
             <input
-              className='px-5 py-2 outline-none rounded-lg bg-gray-200 my-1'
+              className='sm:px-5 p-2 outline-none rounded-lg bg-gray-200 my-1'
               type='text'
               placeholder='Mobile Number *'
               value={mobile}
@@ -174,7 +178,7 @@ function Address({ data }: any) {
           </div>
         </div>
 
-        <div className='bg-gray-50 shadow-sm p-4 mt-3 flex lg:flex-row flex-col'>
+        <div className='bg-gray-50 shadow-sm p-2 sm:p-4 sm:1 sm:mt-3 flex lg:flex-row flex-col'>
           <input
             className='bg-gray-200 outline-none px-5 py-2 rounded-lg m-2'
             type='text'
@@ -190,14 +194,14 @@ function Address({ data }: any) {
             onChange={(e) => { setProvince(e.target.value) }}
           />
           <input
-            className='bg-gray-200 outline-none px-5 py-2 rounded-lg m-2'
+            className='bg-gray-200 outline-none sm:px-5 p-2 rounded-lg m-2'
             type='text'
             placeholder='City*'
             value={city}
             onChange={(e) => { setCity(e.target.value) }}
           />
           <input
-            className='bg-gray-200 outline-none px-5 py-2 rounded-lg m-2'
+            className='bg-gray-200 outline-none sm:px-5 p-2 rounded-lg m-2'
             type='text'
             placeholder='ZIP code*'
             value={zip}
@@ -206,7 +210,7 @@ function Address({ data }: any) {
         </div>
 
 
-        <div className='bg-gray-50 shadow-sm px-4 py-2 flex justify-center flex-col'>
+        <div className='bg-gray-50 shadow-sm sm:px-5 p-2 flex justify-center flex-col'>
           <div className='p-3 flex items-center'>
             <label className='font-bold sm:text-xl'>Set as default shipping address</label>
             <input
@@ -224,7 +228,7 @@ function Address({ data }: any) {
           <div className='p-3'>
             {!buy &&
               <button onClick={() => { onSave_Buy() }}
-                className='rounded-lg bg-orange-500 font-bold py-1 px-5 w-full hover:bg-orange-600'>Save</button>
+                className='rounded-lg bg-orange-500 font-bold py-1 sm:px-5 w-full hover:bg-orange-600'>Save</button>
             }
             {buy && <PayPalScriptProvider options={{ clientId: "AbWY6ass5oHwPubLsDbfLu5U4OKRM1cOlDkb2B4cy0LJPnubnPf11ltL5W7NKau1Uv0Y4XR6HMpMHMBs" }}>
               <PayPalButtons style={{ layout: "horizontal" }} />

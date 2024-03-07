@@ -106,7 +106,7 @@ function BookItem() {
 
         <div>
           <h1 className=" text-orange-700 text-2xl xl:text-3xl font-bold sm:p-1" >Filter Price</h1>
-          <div className="flex space-x-2 sm:text-xl xl:text-2xl">
+          <div className="flex space-x-2 sm:text-xl xl:text-2xl text-gray-900">
             <h1 className=" sm:p-1 sm:px-2  border rounded-xl hover:bg-orange-700 cursor-pointer 
               hover:text-gray-100"
               onClick={() => setisHighPrice(1)}
