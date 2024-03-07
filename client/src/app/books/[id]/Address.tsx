@@ -112,7 +112,7 @@ function Address({ data }: any) {
 
       <div className=" flex flex-col sm:flex-row sm:items-center space-x-1 sm:space-x-4 sm:py-3 space-y-2">
         <h1 className='text-xl sm:w- font-semibold text-gray-800 '>Paiement when recieving : </h1>
-        <div className='flex'>
+        <div className='flex space-x-1 sm:space-x-2'>
           <button
             className={` sm:px-4 p-1 rounded-full  ${!isOnline ? 'bg-green-500 hover:bg-green-600' : ' border-4'}`}
             onClick={() => setIsOnline(false)}
@@ -120,7 +120,7 @@ function Address({ data }: any) {
             Yes
           </button>
           <button
-            className={`s:px-4 p-1 rounded-full ${isOnline ? 'bg-red-500 hover:bg-red-600' : ' border'}`}
+            className={` sm:px-4 p-1 rounded-full ${isOnline ? 'bg-red-500 hover:bg-red-600' : ' border'}`}
             onClick={() => setIsOnline(true)}
           >
             No
