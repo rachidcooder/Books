@@ -64,37 +64,40 @@ function BookItem() {
     <div className="p-2">
       <h1 className=" text-center text-orange-700 text-2xl md:text-3xl xl:text-5xl p-2 font-semibold">Best Books</h1>
       <div className=" flex  w-full justify-end ">
-        <div className="flex border rounded-md items-center px-5">
+        <div className="flex border rounded-md items-center sm:px-5">
           <CiSearch size={20} className=" font-bold" />
           <input placeholder="search for book "
-            className=" outline-none p-2 rounded-lg hover:bg-gray-50 text-xl "
+            className=" outline-none sm:p-2 rounded-lg hover:bg-gray-50 sm:text-xl "
             value={textSearch}
             onChange={(e) => setTextSearch(e.target.value)}
           />
         </div>
 
       </div>
-      <div className=" flex justify-between p-3">
+      <div className=" sm:flex sm:justify-between p-1 sm:p-3">
+
         <div>
-          <h1 className=" text-orange-700 text-2xl xl:text-3xl font-bold p-1" >Categories</h1>
-          <div className=" md:flex space-x-2 text-xl xl:text-2xl ">
-            <h1 className=" p-1 px-2  border rounded-xl cursor-pointer
+          <h1 className=" text-orange-700 text-2xl xl:text-3xl font-bold sm:p-1" >Categories</h1>
+          <div className="flex sm:space-x-2 space-x-1 ps-1 sm:text-xl xl:text-2xl text-center
+           text-gray-900 ">
+
+            <h1 className=" sm:p-1 sm:px-2  border rounded-xl cursor-pointer
              hover:bg-orange-700 hover:text-gray-100"
               onClick={() => setCatregory("all")}
             >All</h1>
-            <h1 className=" p-1 px-2  border rounded-xl cursor-pointer
+            <h1 className=" sm:p-1 sm:px-2  border rounded-xl cursor-pointer
              hover:bg-orange-700 hover:text-gray-100"
               onClick={() => setCatregory("Science")}
             >Science</h1>
-            <h1 className=" p-1 px-2  border rounded-xl cursor-pointer
+            <h1 className=" sm:p-1 sm:px-2  border rounded-xl cursor-pointer
              hover:bg-orange-700 hover:text-gray-100"
               onClick={() => setCatregory("History")}
             >History</h1>
-            <h1 className=" p-1 px-2  border rounded-xl cursor-pointer
+            <h1 className=" sm:p-1  sm:px-2  border rounded-xl cursor-pointer
              hover:bg-orange-700 hover:text-gray-100"
               onClick={() => setCatregory("Religion")}
             >Religion</h1>
-            <h1 className=" p-1 px-2  border rounded-xl cursor-pointer
+            <h1 className=" sm:p-1 sm:px-2  border rounded-xl cursor-pointer
             hover:bg-orange-700 hover:text-gray-100"
               onClick={() => setCatregory("Philosophy")}
             >Philosophy</h1>
@@ -102,13 +105,13 @@ function BookItem() {
         </div>
 
         <div>
-          <h1 className=" text-orange-700 text-2xl xl:text-3xl font-bold p-1" >Filter Price</h1>
-          <div className=" md:flex space-x-2 text-xl xl:text-2xl">
-            <h1 className=" p-1 px-2  border rounded-xl hover:bg-orange-700 cursor-pointer 
+          <h1 className=" text-orange-700 text-2xl xl:text-3xl font-bold sm:p-1" >Filter Price</h1>
+          <div className="flex space-x-2 sm:text-xl xl:text-2xl">
+            <h1 className=" sm:p-1 sm:px-2  border rounded-xl hover:bg-orange-700 cursor-pointer 
               hover:text-gray-100"
               onClick={() => setisHighPrice(1)}
             >Highest</h1>
-            <h1 className=" p-1 px-2  border rounded-xl cursor-pointer
+            <h1 className=" sm:p-1 px-2  border rounded-xl cursor-pointer
              hover:bg-orange-700  hover:text-gray-100"
               onClick={() => setisHighPrice(2)}
             >Lowest</h1>
@@ -120,12 +123,12 @@ function BookItem() {
         {
           Db_books && books.map((book, i) => {
             return (
-              <div key={i} className='flex   flex-col  rounded-sm p-2  shadow-sm items-center 
+              <div key={i} className='flex  flex-col  rounded-sm p-2  shadow-sm items-center 
             text-center'>
                 <img src={book.image}
                   alt='#' className='h-[200px] w-[150px] pt-3 rounded-lg bg-transparent' />
                 <h1 className='text-xl font-bold text-gray-950 text-center py-2'>{book.title}</h1>
-                <p className=' text-gray-700 p-4 '>{book.description}
+                <p className=' text-gray-700 sm:p-4 '>{book.description}
                 </p>
 
                 <div className="flex flex-col justify-end h-full bottom-0 start-0 ">

@@ -90,7 +90,7 @@ function Address({ data }: any) {
 
 
   return (
-    <div className='max-w-[1640px] p-5 '>
+    <div className='max-w-[1640px] p-5 text-gray-900'>
       <div className='flex max-h-[200px] p-5 bg-gray-50'>
         <img src={data[0].image} className='w-[100px] h-[120px]' alt='' />
         <div className=' px-5 '>
