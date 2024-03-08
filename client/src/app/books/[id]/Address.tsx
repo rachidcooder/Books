@@ -77,8 +77,8 @@ function Address({ data }: any) {
       setErr("Some fields is empty!");
     } else {
 
-      setErr("");
-      setTobuy(true)
+      setErr("Remember this is a fake website !!");
+      setTobuy(true);
     }
   }
 
@@ -92,7 +92,7 @@ function Address({ data }: any) {
   return (
     <div className='max-w-[1640px] sm:p-5 p-2 text-gray-900'>
 
-      <div className=' sm:flex items-center  sm:p-5 bg-gray-50'>
+      <div className=' flex  flex-col sm:flex-row  items-center  sm:p-5 bg-gray-50'>
         <img src={data[0].image} className='w-[100px] h-[120px]' alt='' />
         <div className=' sm:px-5 p-1 '>
           <h1 className=' sm:text-3xl text-2xl font-bold '>{data[0].title}</h1>
@@ -112,15 +112,15 @@ function Address({ data }: any) {
 
       <div className=" flex flex-col sm:flex-row sm:items-center space-x-1 sm:space-x-4 sm:py-3 space-y-2">
         <h1 className='text-xl sm:w- font-semibold text-gray-800 '>Paiement when recieving : </h1>
-        <div className='flex space-x-1 sm:space-x-2'>
+        <div className='flex space-x-1 sm:space-x-2 items-center justify-center'>
           <button
-            className={` sm:px-4 p-1 rounded-full  ${!isOnline ? 'bg-green-500 hover:bg-green-600' : ' border-4'}`}
+            className={` px-4 p-1 rounded-full  ${!isOnline ? 'bg-green-500 hover:bg-green-600' : ' border-4'}`}
             onClick={() => setIsOnline(false)}
           >
             Yes
           </button>
           <button
-            className={` sm:px-4 p-1 rounded-full ${isOnline ? 'bg-red-500 hover:bg-red-600' : ' border'}`}
+            className={` px-4 p-1 rounded-full ${isOnline ? 'bg-red-500 hover:bg-red-600' : ' border'}`}
             onClick={() => setIsOnline(true)}
           >
             No
@@ -130,9 +130,9 @@ function Address({ data }: any) {
       </div>
 
 
-      {!isOnline && <div className='flex  flex-col items-center justify-center h-full sm:p-12 p-4'>
-        <h1 className=' sm:text-2xl font-semibold p-1 mt-10 text-center'> Choose the quantity and then  </h1>
-        <h1 className='text-xl sm:text-3xl font-semibold text-center'>send a message on WhatsApp </h1>
+      {!isOnline && <div className='flex text-gray-900  flex-col items-center justify-center h-full sm:p-12 p-4'>
+        <h1 className='text-xl sm:text-2xl font-semibold p-2 sm:mt-10 text-center'> Choose the quantity and then  </h1>
+        <h1 className=' sm:text-3xl font-semibold text-center'>send a message on WhatsApp </h1>
       </div>}
 
 

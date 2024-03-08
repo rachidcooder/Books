@@ -77,27 +77,27 @@ function BookItem() {
       <div className=" sm:flex sm:justify-between p-1 sm:p-3">
 
         <div>
-          <h1 className=" text-orange-700 text-2xl xl:text-3xl font-bold sm:p-1" >Categories</h1>
+          <h1 className=" text-orange-700 text-xl sm:text-2xl xl:text-3xl font-bold sm:p-1" >Categories</h1>
           <div className="flex sm:space-x-2 space-x-1 ps-1 sm:text-xl xl:text-2xl text-center
            text-gray-900 ">
 
-            <h1 className=" sm:p-1 sm:px-2  border rounded-xl cursor-pointer
+            <h1 className=" p-1 sm:px-2  border rounded-xl cursor-pointer
              hover:bg-orange-700 hover:text-gray-100"
               onClick={() => setCatregory("all")}
             >All</h1>
-            <h1 className=" sm:p-1 sm:px-2  border rounded-xl cursor-pointer
+            <h1 className=" p-1 sm:px-2  border rounded-xl cursor-pointer
              hover:bg-orange-700 hover:text-gray-100"
               onClick={() => setCatregory("Science")}
             >Science</h1>
-            <h1 className=" sm:p-1 sm:px-2  border rounded-xl cursor-pointer
+            <h1 className=" p-1 sm:px-2  border rounded-xl cursor-pointer
              hover:bg-orange-700 hover:text-gray-100"
               onClick={() => setCatregory("History")}
             >History</h1>
-            <h1 className=" sm:p-1  sm:px-2  border rounded-xl cursor-pointer
+            <h1 className=" p-1  sm:px-2  border rounded-xl cursor-pointer
              hover:bg-orange-700 hover:text-gray-100"
               onClick={() => setCatregory("Religion")}
             >Religion</h1>
-            <h1 className=" sm:p-1 sm:px-2  border rounded-xl cursor-pointer
+            <h1 className=" p-1 sm:px-2  border rounded-xl cursor-pointer
             hover:bg-orange-700 hover:text-gray-100"
               onClick={() => setCatregory("Philosophy")}
             >Philosophy</h1>
@@ -105,13 +105,13 @@ function BookItem() {
         </div>
 
         <div>
-          <h1 className=" text-orange-700 text-2xl xl:text-3xl font-bold sm:p-1" >Filter Price</h1>
+          <h1 className=" text-orange-700 sm:text-2xl xl:text-3x text-xl font-bold sm:p-1" >Filter Price</h1>
           <div className="flex space-x-2 sm:text-xl xl:text-2xl text-gray-900">
-            <h1 className=" sm:p-1 sm:px-2  border rounded-xl hover:bg-orange-700 cursor-pointer 
+            <h1 className=" p-1 sm:px-2  border rounded-xl hover:bg-orange-700 cursor-pointer 
               hover:text-gray-100"
               onClick={() => setisHighPrice(1)}
             >Highest</h1>
-            <h1 className=" sm:p-1 px-2  border rounded-xl cursor-pointer
+            <h1 className=" p-1 sm:px-2  border rounded-xl cursor-pointer
              hover:bg-orange-700  hover:text-gray-100"
               onClick={() => setisHighPrice(2)}
             >Lowest</h1>
@@ -119,7 +119,7 @@ function BookItem() {
         </div>
 
       </div>
-      <div className=' grid lg:grid-cols-4 md:grid-cols-3 gap-6  grid-cols-1 py-2'>
+      <div className=' grid lg:grid-cols-4 sm:grid-cols-2 md:grid-cols-3 gap-6  grid-cols-1 py-2'>
         {
           Db_books && books.map((book, i) => {
             return (

@@ -34,10 +34,11 @@ export default async function page() {
     <main className='px-3 scrollbar-thumb-orange-800 scrollbar-thin 
           scrollbar-track-slate-50 h-screen overflow-y-scroll '>
       <div className='max-h-[500px] relative'>
-        <div className='h-full w-full absolute hidden  sm:flex flex-col max-h-[500px] md:p-12'>
-          <h1 className=' text-gray-200 text-center text-4xl font-bold lg:text-7xl sm:text-5xl md:m-5'
+        <div className='h-full w-full absolute flex items-center
+              flex-col max-h-[500px] md:p-12'>
+          <h1 className=' text-gray-200 text-center  text-xl font-bold lg:text-7xl sm:text-5xl md:m-5'
           >Welecom to BookShop</h1>
-          <h1 className="text-xl font-medium lg:text-2xl text-center text-orange-950">
+          <h1 className="sm:text-xl sm:font-medium lg:text-2xl sm:text-center text-orange-950">
             We&apos;re here to help you find the perfect book, regardless of your reading taste
           </h1>
 
